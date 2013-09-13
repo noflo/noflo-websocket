@@ -1,0 +1,6 @@
+'test' -> PROTOCOL Connect(websocket/Connect)
+'ws://localhost:8000' -> URL Connect()
+Connect() CONNECTION -> CONNECTION Send(websocket/SendMessage)
+'Hello' -> IN Strings(core/Merge)
+'World' -> IN Strings()
+Strings() OUT -> STRING Send()

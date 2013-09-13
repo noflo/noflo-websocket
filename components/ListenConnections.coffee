@@ -10,10 +10,10 @@ class ListenConnections extends noflo.Component
     @outPorts =
       connection: new noflo.Port 'object'
 
-    @inPorts.server.on 'data', (webServer) ->
+    @inPorts.server.on 'data', (webServer) =>
       @createSocketServer webServer
 
-    @inPorts.protocol.on 'data', (@protocol) ->
+    @inPorts.protocol.on 'data', (@protocol) =>
 
   createSocketServer: (webServer) ->
     socketServer = new server
@@ -22,7 +22,7 @@ class ListenConnections extends noflo.Component
 
   handleRequest: (request) =>
     connection = request.accept @protocol, request.origin
-    @outPorts.out.send connection
-    @outPorts.out.disconnect()
+    @outPorts.connection.send connection
+    @outPorts.connection.disconnect()
 
 exports.getComponent = -> new ListenConnections

@@ -1,0 +1,6 @@
+'8000' -> LISTEN Web(webserver/Server)
+'test' -> PROTOCOL Socket(websocket/ListenConnections)
+Web() SERVER -> SERVER Socket()
+Web() REQUEST -> IN DropRequests(core/Drop)
+Socket() CONNECTION -> CONNECTION Message(websocket/ListenMessages)
+Message() STRING -> IN Show(core/Output)
