@@ -12,6 +12,7 @@
   "scripts": [
     "components/Connect.coffee",
     "components/SendMessage.coffee",
+    "components/ListenMessages.coffee",
     "index.js"
   ],
   "json": [
