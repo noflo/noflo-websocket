@@ -12,6 +12,15 @@ class ListenMessages extends noflo.Component
       @subscribe data
 
   subscribe: (connection) ->
+    if noflo.isBrowser()
+      return unless @outPorts.string.isAttached()
+      connection.addEventListener 'message', (message) =>
+        @outPorts.string.send message.data
+      , false
+      connection.addEventListener 'close', (message) =>
+        @outPorts.string.disconnect()
+      , false
+      return
     connection.on 'message', (message) =>
       if message.type is 'utf8' and @outPorts.string.isAttached()
         @outPorts.string.send message.utf8Data

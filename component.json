@@ -20,7 +20,8 @@
   "noflo": {
     "components": {
       "Connect": "components/Connect.coffee",
-      "SendMessage": "components/SendMessage.coffee"
+      "SendMessage": "components/SendMessage.coffee",
+      "ListenMessages": "components/ListenMessages.coffee"
     }
   }
 }
