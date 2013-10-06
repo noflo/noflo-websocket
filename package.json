@@ -17,6 +17,7 @@
     }
   ],
   "noflo": {
+    "icon": "comments",
     "components": {
       "Connect": "./components/Connect.coffee",
       "ListenConnections": "./components/ListenConnections.coffee",

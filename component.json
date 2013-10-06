@@ -19,6 +19,7 @@
     "component.json"
   ],
   "noflo": {
+    "icon": "comments",
     "components": {
       "Connect": "components/Connect.coffee",
       "SendMessage": "components/SendMessage.coffee",
