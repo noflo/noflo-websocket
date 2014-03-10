@@ -2,6 +2,7 @@ noflo = require 'noflo'
 {server} = require 'websocket'
 
 class ListenConnections extends noflo.Component
+  description: 'Listen for WebSocket upgrade requests on a HTTP server'
   constructor: ->
     @protocol = ''
     @inPorts =
@@ -9,6 +10,8 @@ class ListenConnections extends noflo.Component
       protocol: new noflo.Port 'string'
     @outPorts =
       connection: new noflo.Port 'object'
+      url: new noflo.Port 'object'
+      ip: new noflo.Port 'string'
       error: new noflo.Port 'object'
 
     @inPorts.server.on 'data', (webServer) =>
@@ -32,7 +35,20 @@ class ListenConnections extends noflo.Component
         @outPorts.error.disconnect()
         return
       throw err
+    @outPorts.connection.beginGroup request.key
     @outPorts.connection.send connection
+    @outPorts.connection.endGroup()
     @outPorts.connection.disconnect()
+
+    if @outPorts.url.isAttached()
+      @outPorts.url.beginGroup request.key
+      @outPorts.url.send request.resourceURL
+      @outPorts.url.endGroup()
+      @outPorts.url.disconnect()
+    if @outPorts.ip.isAttached()
+      @outPorts.ip.beginGroup request.key
+      @outPorts.ip.send request.remoteAddress
+      @outPorts.ip.endGroup()
+      @outPorts.ip.disconnect()
 
 exports.getComponent = -> new ListenConnections
