@@ -6,7 +6,7 @@ else
 
 class Connect extends noflo.Component
   constructor: ->
-    @protocol = 'noflo'
+    @protocol = ''
     @inPorts =
       url: new noflo.Port 'string'
       protocol: new noflo.Port 'string'

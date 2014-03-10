@@ -3,13 +3,13 @@ noflo = require 'noflo'
 
 class ListenConnections extends noflo.Component
   constructor: ->
-    @protocol = 'noflo'
+    @protocol = ''
     @inPorts =
       server: new noflo.Port 'object'
       protocol: new noflo.Port 'string'
     @outPorts =
       connection: new noflo.Port 'object'
-      error: new noflo.Port 'error'
+      error: new noflo.Port 'object'
 
     @inPorts.server.on 'data', (webServer) =>
       @createSocketServer webServer
@@ -26,7 +26,9 @@ class ListenConnections extends noflo.Component
       connection = request.accept @protocol, request.origin
     catch err
       if @outPorts.error.isAttached()
-        @outPorts.error.send "Accepting #{@protocol} protocol failed, requested #{request.requestedProtocols.join(', ')}"
+        prots = request.requestedProtocols.join ', '
+        err = new Error "Accepting #{@protocol} failed, requested #{prots}"
+        @outPorts.error.send err
         @outPorts.error.disconnect()
         return
       throw err
