@@ -1,7 +1,7 @@
 {
   "name": "noflo-websocket",
   "description": "WebSocket components for NoFlo",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "name": "Henri Bergius",
     "email": "henri.bergius@iki.fi"
