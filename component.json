@@ -4,8 +4,7 @@
   "author": "Henri Bergius <henri.bergius@iki.fi>",
   "repo": "noflo/noflo-websocket",
   "version": "0.1.0",
-  "keywords": [
-  ],
+  "keywords": [],
   "dependencies": {
     "noflo/noflo": "*"
   },
@@ -22,8 +21,8 @@
     "icon": "comments",
     "components": {
       "Connect": "components/Connect.coffee",
-      "SendMessage": "components/SendMessage.coffee",
-      "ListenMessages": "components/ListenMessages.coffee"
+      "ListenMessages": "components/ListenMessages.coffee",
+      "SendMessage": "components/SendMessage.coffee"
     }
   }
 }

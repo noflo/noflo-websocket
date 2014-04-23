@@ -1,6 +1,8 @@
 noflo = require 'noflo'
 {server} = require 'websocket'
 
+# @runtime noflo-nodejs
+
 class ListenConnections extends noflo.Component
   description: 'Listen for WebSocket upgrade requests on a HTTP server'
   constructor: ->

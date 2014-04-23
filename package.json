@@ -19,10 +19,10 @@
   "noflo": {
     "icon": "comments",
     "components": {
-      "Connect": "./components/Connect.coffee",
-      "ListenConnections": "./components/ListenConnections.coffee",
-      "ListenMessages": "./components/ListenMessages.coffee",
-      "SendMessage": "./components/SendMessage.coffee"
+      "Connect": "components/Connect.coffee",
+      "ListenConnections": "components/ListenConnections.coffee",
+      "ListenMessages": "components/ListenMessages.coffee",
+      "SendMessage": "components/SendMessage.coffee"
     }
   },
   "dependencies": {
@@ -45,7 +45,8 @@
     "grunt-component": "~0.1.2",
     "noflo-webserver": "0.0.3",
     "noflo-core": "~0.1.1",
-    "noflo-filesystem": "~1.0.2"
+    "noflo-filesystem": "~1.0.2",
+    "grunt-noflo-manifest": "^0.1.1"
   },
   "keywords": []
 }
