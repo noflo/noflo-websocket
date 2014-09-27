@@ -22,32 +22,10 @@ module.exports = ->
         ext: '.js'
 
     # Browser version building
-    component:
-      install:
-        options:
-          action: 'install'
-    component_build:
-      'noflo-websocket':
-        output: './browser/'
-        config: './component.json'
-        scripts: true
-        styles: false
-        plugins: ['coffee']
-        configure: (builder) ->
-          # Enable Component plugins
-          json = require 'component-json'
-          builder.use json()
-
-    # Fix broken Component aliases, as mentioned in
-    # https://github.com/anthonyshort/component-coffee/issues/3
-    combine:
-      browser:
-        input: 'browser/noflo-websocket.js'
-        output: 'browser/noflo-websocket.js'
-        tokens: [
-          token: '.coffee'
-          string: '.js'
-        ]
+    noflo_browser:
+      build:
+        files:
+          'browser/noflo-websocket.js': ['component.json']
 
     # JavaScript minification for the browser
     uglify:
@@ -83,9 +61,7 @@ module.exports = ->
   # Grunt plugins used for building
   @loadNpmTasks 'grunt-contrib-coffee'
   @loadNpmTasks 'grunt-noflo-manifest'
-  @loadNpmTasks 'grunt-component'
-  @loadNpmTasks 'grunt-component-build'
-  @loadNpmTasks 'grunt-combine'
+  @loadNpmTasks 'grunt-noflo-browser'
   @loadNpmTasks 'grunt-contrib-uglify'
 
   # Grunt plugins used for testing
@@ -99,9 +75,7 @@ module.exports = ->
     @task.run 'coffee'
     @task.run 'noflo_manifest'
     if target is 'all' or target is 'browser'
-      @task.run 'component'
-      @task.run 'component_build'
-      @task.run 'combine'
+      @task.run 'noflo_browser'
       @task.run 'uglify'
 
   @registerTask 'test', 'Build NoFlo and run automated tests', (target = 'all') =>
@@ -111,9 +85,7 @@ module.exports = ->
     if target is 'all' or target is 'nodejs'
       @task.run 'cafemocha'
     if target is 'all' or target is 'browser'
-      @task.run 'component'
-      @task.run 'component_build'
-      @task.run 'combine'
+      @task.run 'noflo_browser'
       @task.run 'mocha_phantomjs'
 
   @registerTask 'default', ['test']
