@@ -26,21 +26,21 @@
     }
   },
   "dependencies": {
-    "noflo": "~0.5.0",
+    "noflo": "~0.6.0",
     "websocket": "~1.0.8"
   },
   "devDependencies": {
-    "chai": "~1.9.0",
+    "chai": "~3.5.0",
     "grunt": "~0.4.1",
     "grunt-cafe-mocha": "~0.1.2",
     "grunt-coffeelint": "~0.0.6",
-    "grunt-contrib-coffee": "~0.11.1",
-    "grunt-contrib-uglify": "~0.6.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-mocha-phantomjs": "~0.6.0",
+    "grunt-contrib-coffee": "~1.0.0",
+    "grunt-contrib-uglify": "~1.0.1",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-mocha-phantomjs": "~3.0.0",
     "grunt-noflo-browser": "^0.1.3",
     "grunt-noflo-manifest": "^0.1.1",
-    "mocha": "~1.21.0",
+    "mocha": "~2.4.5",
     "noflo-core": "~0.1.1",
     "noflo-filesystem": "~1.0.2",
     "noflo-webserver": "~0.0.4"
