@@ -43,5 +43,8 @@
     "noflo-core": "^0.2.3",
     "noflo-webserver": "^0.0.5"
   },
-  "keywords": []
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": ["noflo"]
 }
