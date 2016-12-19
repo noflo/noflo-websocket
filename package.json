@@ -21,24 +21,28 @@
     }
   },
   "dependencies": {
-    "noflo": "~0.5.0",
-    "websocket": "~1.0.8"
+    "noflo": "0.x >= 0.5",
+    "websocket": "^1.0.8"
   },
   "devDependencies": {
-    "chai": "~1.9.0",
-    "grunt": "~1.0.1",
-    "grunt-coffeelint": "~0.0.16",
+    "chai": "^1.9.0",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.12.2",
+    "fbp-loader": "^0.1.1",
+    "grunt": "^1.0.1",
+    "grunt-coffeelint": "^0.0.16",
     "grunt-contrib-coffee": "^1.0.0",
-    "grunt-contrib-uglify": "~2.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-mocha-phantomjs": "~4.0.0",
+    "grunt-mocha-phantomjs": "^4.0.0",
     "grunt-mocha-test": "^0.13.2",
     "grunt-noflo-browser": "^1.0.1",
     "grunt-noflo-manifest": "^0.1.12",
-    "mocha": "~3.2.0",
-    "noflo-core": "~0.1.1",
-    "noflo-filesystem": "~1.0.2",
-    "noflo-webserver": "~0.0.4"
+    "json-loader": "^0.5.4",
+    "mocha": "^3.2.0",
+    "noflo-core": "^0.1.1",
+    "noflo-filesystem": "^1.0.2",
+    "noflo-webserver": "^0.0.5"
   },
   "keywords": []
 }
