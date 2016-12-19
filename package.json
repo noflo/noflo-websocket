@@ -43,7 +43,7 @@
     "mocha": "~1.21.0",
     "noflo-core": "~0.1.1",
     "noflo-filesystem": "~1.0.2",
-    "noflo-webserver": "~0.0.4"
+    "noflo-webserver": "~0.0.5"
   },
   "keywords": []
 }
