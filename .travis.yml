@@ -1,5 +1,13 @@
 language: node_js
 node_js:
-  - 0.10
+- '4.6'
 before_script:
-  - npm install -g grunt-cli
+- npm install -g grunt-cli
+deploy:
+  provider: npm
+  email: henri.bergius@iki.fi
+  api_key:
+    secure: TAaYEKz7Pkw3nd+GzgTAhN/W3bk+jVg5j9wMUxi3BEjAMd4uRGpp8NBCEIUHA49HoA9HN4SaLHo3Ogvzi79HphnRjr2liER+KYPLvYjMWfXRvMjwanyjpthvuTYuDkCeIQ2gecTu15Kc5CHONfFjlVuQ8r1WrOuCFRaOT2cxIr0=
+  on:
+    tags: true
+    repo: noflo/noflo-websocket
