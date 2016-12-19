@@ -1,0 +1,7 @@
+INPORT=Web.LISTEN:PORT
+'test' -> PROTOCOL Socket(websocket/ListenConnections)
+Web(webserver/Server) SERVER -> SERVER Socket
+Web REQUEST -> IN DropRequests(core/Drop)
+Socket CONNECTION -> CONNECTION Message(websocket/ListenMessages)
+Socket CONNECTION -> CONNECTION SendMessage(websocket/SendMessage)
+Message STRING -> STRING SendMessage
