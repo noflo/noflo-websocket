@@ -21,7 +21,7 @@
     }
   },
   "dependencies": {
-    "noflo": "0.x >= 0.5",
+    "noflo": "0.7.3",
     "websocket": "^1.0.8"
   },
   "devDependencies": {
