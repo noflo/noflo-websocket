@@ -1,7 +1,7 @@
 noflo = require 'noflo'
 WsClient = require('websocket').client
 
-# @runtime noflo-browser
+# @runtime noflo-nodejs
 # @name Connect
 
 class Connect extends noflo.Component
