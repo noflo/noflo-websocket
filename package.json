@@ -12,16 +12,10 @@
   },
   "license": "MIT",
   "noflo": {
-    "icon": "comments",
-    "components": {
-      "Connect": "components/Connect.coffee",
-      "ListenConnections": "components/ListenConnections.coffee",
-      "ListenMessages": "components/ListenMessages.coffee",
-      "SendMessage": "components/SendMessage.coffee"
-    }
+    "icon": "comments"
   },
   "dependencies": {
-    "noflo": "0.x >= 0.5",
+    "noflo": "0.x >= 0.8",
     "websocket": "^1.0.23"
   },
   "devDependencies": {
