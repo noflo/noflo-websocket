@@ -13,9 +13,10 @@ describe 'WebSocket echo server', ->
     noflo.loadFile graphPath,
       baseDir: baseDir
     , (err, nw) ->
-      nw.start()
       network = nw
-      done()
+      nw.start done
+  after (done) ->
+    network.stop done
   describe 'after instantiation', ->
     it 'should be possible to run', (done) ->
       network.addInitial

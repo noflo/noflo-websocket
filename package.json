@@ -12,16 +12,10 @@
   },
   "license": "MIT",
   "noflo": {
-    "icon": "comments",
-    "components": {
-      "Connect": "components/Connect.coffee",
-      "ListenConnections": "components/ListenConnections.coffee",
-      "ListenMessages": "components/ListenMessages.coffee",
-      "SendMessage": "components/SendMessage.coffee"
-    }
+    "icon": "comments"
   },
   "dependencies": {
-    "noflo": "0.x >= 0.5",
+    "noflo": "0.x >= 0.8",
     "websocket": "^1.0.23"
   },
   "devDependencies": {
@@ -37,11 +31,10 @@
     "grunt-mocha-phantomjs": "^4.0.0",
     "grunt-mocha-test": "^0.13.2",
     "grunt-noflo-browser": "^1.0.1",
-    "grunt-noflo-manifest": "^0.1.12",
     "json-loader": "^0.5.4",
     "mocha": "^4.0.0",
     "noflo-core": "^0.4.0",
-    "noflo-webserver": "^0.0.6"
+    "noflo-webserver": "^0.1.0"
   },
   "scripts": {
     "test": "grunt test"

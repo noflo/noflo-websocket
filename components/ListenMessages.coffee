@@ -1,36 +1,35 @@
 noflo = require 'noflo'
 
-class ListenMessages extends noflo.Component
-  constructor: ->
-    @inPorts =
-      connection: new noflo.Port 'object'
-    @outPorts =
-      string: new noflo.Port 'string'
-      binary: new noflo.Port 'binary'
-
-    @inPorts.connection.on 'data', (data) =>
-      @subscribe data
-
-  subscribe: (connection) ->
+exports.getComponent = ->
+  c = new noflo.Component
+  c.inPorts.add 'connection',
+    datatype: 'object'
+  c.outPorts.add 'string',
+    datatype: 'string'
+  c.outPorts.add 'binary',
+    datatype: 'buffer'
+  c.forwardBrackets = {}
+  c.autoOrdering = false
+  c.process (input, output) ->
+    return unless input.hasData 'connection'
+    connection = input.getData 'connection'
     if noflo.isBrowser()
-      return unless @outPorts.string.isAttached()
-      connection.addEventListener 'message', (message) =>
-        @outPorts.string.send message.data
+      connection.addEventListener 'message', (message) ->
+        output.send
+          string: message.data
       , false
-      connection.addEventListener 'close', (message) =>
-        @outPorts.string.disconnect()
+      connection.addEventListener 'close', (message) ->
+        output.done()
       , false
       return
-    connection.on 'message', (message) =>
-      if message.type is 'utf8' and @outPorts.string.isAttached()
-        @outPorts.string.send message.utf8Data
+    connection.on 'message', (message) ->
+      if message.type is 'utf8'
+        output.send
+          string: message.utf8Data
         return
-      if message.type is 'binary' and @outPorts.binary.isAttached()
-        @outPorts.binary.send message.binaryData
+      if message.type is 'binary'
+        output.send
+          binary: message.binaryData
         return
-
-    connection.on 'close', =>
-      @outPorts.string.disconnect() if @outPorts.string.isAttached()
-      @outPorts.binary.disconnect() if @outPorts.binary.isAttached()
-
-exports.getComponent = -> new ListenMessages
+    connection.on 'close', ->
+      output.done()
