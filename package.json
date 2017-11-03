@@ -15,7 +15,7 @@
     "icon": "comments"
   },
   "dependencies": {
-    "noflo": "0.x >= 0.8",
+    "noflo": "1.0.0",
     "websocket": "^1.0.23"
   },
   "devDependencies": {
