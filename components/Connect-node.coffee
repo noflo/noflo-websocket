@@ -1,7 +1,6 @@
 noflo = require 'noflo'
 WsClient = require('websocket').client
 URL = require('url')
-Buffer = require('buffer').Buffer
 
 # @runtime noflo-nodejs
 # @name Connect
