@@ -7,7 +7,7 @@ Buffer = require('buffer').Buffer
 # @name Connect
 
 btoa = (str) ->
-    return new Buffer(str).toString('base64');
+  return new Buffer(str).toString('base64')
 
 basicAuth = (user, password) ->
   token = user + ":" + password
