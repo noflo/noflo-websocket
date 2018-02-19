@@ -4,24 +4,16 @@ exports.getComponent = ->
   c = new noflo.Component
   c.inPorts.add  'connection',
     datatype: 'object'
+    control: true
   c.inPorts.add 'string',
     datatype: 'string'
-  c.connections = {}
-  c.tearDown = (callback) ->
-    c.connections = {}
-    do callback
+
   c.process (input, output) ->
-    if input.hasData 'connection'
-      c.connections[input.scope] = input.getData 'connection'
-      output.done()
-      return
-    return unless c.connections[input.scope]
-    return unless input.hasData 'string'
-    message = input.getData 'string'
+    return unless input.hasData 'connection', 'string'
+
+    [connection, message] = input.getData 'connection', 'string'
     if noflo.isBrowser()
-      c.connections[input.scope].send message
-      output.done()
-      return
-    c.connections[input.scope].sendUTF message
+      connection.send message
+    else
+      connection.sendUTF message
     output.done()
-    return
