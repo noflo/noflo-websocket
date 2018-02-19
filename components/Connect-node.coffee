@@ -1,8 +1,16 @@
 noflo = require 'noflo'
 WsClient = require('websocket').client
+URL = require('url')
 
 # @runtime noflo-nodejs
 # @name Connect
+
+btoa = (str) ->
+  return new Buffer(str).toString('base64')
+
+basicAuth = (user, password) ->
+  token = user + ":" + password
+  return "Basic " + btoa(token)
 
 exports.getComponent = ->
   c = new noflo.Component
@@ -30,5 +38,14 @@ exports.getComponent = ->
     client.on 'connect', (connection) ->
       output.sendDone
         connection: connection
-    client.connect url, protocol
+
+    # Support HTTP Basic Auth
+    headers = {}
+    u = URL.parse url
+    if u.auth
+      [user, pass] = u.auth.split ':'
+      headers['Authorization'] = basicAuth(user, pass)
+
+    client.connect url, protocol, null, headers
+
     return
